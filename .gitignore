@@ -1,0 +1,7 @@
+# ambiente de desenvolvimento do app (não é necessário para publicar)
+dev/node_modules/
+dev/build/
+dev/package-lock.json
+/tmp/
+*.log
+.DS_Store

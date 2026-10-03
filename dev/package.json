@@ -1,0 +1,16 @@
+{
+  "name": "luna-dev",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Ferramentas de desenvolvimento do app Luna (bundle e render de teste)",
+  "type": "module",
+  "scripts": {
+    "bundle": "mkdir -p build && cp ../src/main.js build/entry.js && esbuild build/entry.js --bundle --minify --format=iife --target=es2019 --outfile=../app.bundle.js",
+    "render": "node render.mjs --view bust --out ./preview.png"
+  },
+  "dependencies": {
+    "@pixiv/three-vrm": "^3.5.5",
+    "esbuild": "^0.28.2",
+    "three": "^0.186.1"
+  }
+}

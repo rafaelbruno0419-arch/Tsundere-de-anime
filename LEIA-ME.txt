@@ -1,0 +1,59 @@
+🌙 LUNA — Avatar de anime (VTuber de bolso)
+===========================================
+
+O que é
+-------
+Uma página estática (sem framework e sem build) que abre um avatar VRM 3D no
+navegador do celular. Você escreve, ela responde com IA (Groq) e fala em voz
+alta com a voz do próprio navegador. O avatar mexe a boca, pisca, muda de
+expressão e o olhar acompanha o seu dedo.
+
+Arquivos
+--------
+  index.html        → a página (visual, layout, painel de configurações)
+  app.bundle.js     → todo o JavaScript já empacotado (three.js + three-vrm)
+  assets/avatar.vrm → o modelo 3D (10 MB) — NÃO renomeie nem mova de pasta
+  LEIA-ME.txt       → este arquivo
+
+Como publicar (Vercel)
+----------------------
+1. Suba estes arquivos na raiz do repositório, preservando assets/avatar.vrm.
+2. Na Vercel: Add New → Project → importe o repositório.
+3. Framework Preset: Other • Root Directory: ./ • Build Command: (vazio)
+4. Deploy. Pronto: é só abrir no celular.
+
+Não precisa de servidor próprio: a página é 100% estática. A única chamada
+externa é para a API da Groq (a sua chave, salva no navegador).
+
+Como usar
+---------
+1. Abra a página e toque em ⚙️.
+2. Cole a sua chave da Groq (começa com "gsk_") e escolha a voz do navegador.
+3. Salve e converse. 🔊 repete a última fala; os emojis forçam emoções.
+4. Arraste para girar o avatar, use a pinça para o zoom e 🎯 para voltar.
+
+Sem a chave da Groq o avatar funciona normalmente, mas ela só responde com
+falas prontas (a voz e as expressões continuam funcionando).
+
+Dicas se algo falhar
+--------------------
+• Tela preta? Confira se assets/avatar.vrm foi enviado (deve ter ~10 MB).
+  Sem ele aparece uma mensagem de erro explicando.
+• Abra por http(s) — abrir o index.html direto do arquivo (file://) bloqueia
+  o carregamento do modelo.
+• Celular antigo com pouca memória pode não abrir o WebGL: tente outro
+  navegador ou feche as abas abertas.
+• A chave da Groq fica apenas no localStorage deste navegador. Como a chamada
+  é feita direto do front-end, ela é visível para quem usa o aparelho. Para
+  disponibilizar o projeto para outras pessoas, o ideal é criar uma função
+  serverless na Vercel que guarde a chave e faça a chamada no lugar do site.
+
+Créditos
+--------
+Avatar: "VRM1_Constraint_Twist_Sample" © 2022 pixiv Inc.
+Licença: VRM Public License 1.0 (https://vrm.dev/licenses/1.0/)
+Redistribuição e modificação permitidas — veja os metadados dentro do próprio
+arquivo .vrm.
+
+Bibliotecas: three.js (MIT) e @pixiv/three-vrm (MIT).
+Os créditos aparecem também no rodapé da página.
